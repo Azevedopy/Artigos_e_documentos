@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treinamento: Processos de Tickets</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Chosen Palette: Warm Neutral (bg-gray-50/bg-white, text-gray-900, accent-blue-700) -->
+    <!-- Application Structure Plan: A estrutura é um SPA temático com navegação fixa no topo (Início, Princípios, Processos, Métricas, Treinamento). Esta abordagem é mais funcional para aprendizado e referência do que uma apresentação linear. A interatividade principal está na seção 'Processos', que usa abas (Tabs) acionadas por JS para condensar os 4 guias principais (MECE, ACALMA, Handoff, Comunicação) em um único local explorável. A seção 'Métricas' usa um gráfico Chart.js para visualizar os KPIs e metas de certificação (Slides 7, 13), tornando os objetivos mais claros. Esta estrutura foi escolhida para agrupar o conteúdo por função (Por quê, Como, Como Medir), o que melhora a usabilidade e a retenção do conhecimento. -->
+    <!-- Visualization & Content Choices: 
+        - Slide 2 (Objetivo): Goal: Inform. Viz: Lista com ícones (HTML/Unicode ⚡, 🗣️, 🎯). Justification: Introdução clara.
+        - Slide 3, 4 (Atendimento/Mindset): Goal: Organize. Viz: Colunas de "É vs Não é" e "Regras" (HTML/Flex). Justification: Comparação direta e clareza.
+        - Slide 5, 8, 9, 6 (Processos): Goal: Organize/Explain. Viz: Interface de Abas (JS). Dentro das abas: listas estilizadas em HTML/Tailwind para MECE e ACALMA, checklist para Handoff, tabela para Comunicação. Interaction: Cliques nas abas revelam conteúdo. Justification: Consolida todos os guias práticos em uma seção compacta.
+        - Slide 7, 13 (Métricas/Certificação): Goal: Inform/Compare. Viz: Gráfico de Barras (Chart.js) mostrando FCR, CSAT, Reabertura vs. Metas. Interaction: Tooltips no hover. Justification: Visualiza metas de performance de forma mais impactante que tabelas.
+        - Slide 10, 11, 12, 15 (Evolução/Dinâmicas/Material): Goal: Inform. Viz: Listas e cards (HTML/Grid). Justification: Sumário claro do plano de aprendizado e melhoria.
+        - Todos os diagramas (MECE, ACALMA) são feitos com HTML/Tailwind, sem SVG ou Mermaid. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        .nav-active {
+            color: #1D4ED8; /* text-blue-700 */
+            font-weight: 600;
+            border-bottom-width: 2px;
+            border-color: #1D4ED8;
+        }
+        .tab-active {
+            background-color: #1D4ED8; /* bg-blue-700 */
+            color: #FFFFFF; /* text-white */
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans leading-relaxed">
+
+    <!-- Header / Navegação Fixa -->
+    <header class="sticky top-0 bg-white shadow-md z-50">
+        <nav class="container mx-auto px-4 md:px-6 py-3 flex justify-between items-center">
+            <div class="font-bold text-xl text-blue-700">
+                📚 Treinamento: Condução de Tickets
+        
+        </div>
+        <div class="nav-links">
+            <a href="#" class="active">Início</a>
+            <a href="#">Princípios</a>
+            <a href="#">Processos</a>
+            <a href="#">Métricas</a>
+            <a href="#">Plano</a>
+        </div>
+    </div>
+
+    <div class="main-content">
+        
+        <p style="font-size: 3em; margin-bottom: 0;">📚</p>
+        <h1 style="color: #333; margin-top: 0; font-size: 3em;">Treinamento Completo</h1>
+        <h2 style="color: #0056b3;">Processos e Padronização dos Tickets</h2>
+        
+        <p class="intro-text">
+            Bem-vindo ao nosso programa de capacitação. Esta plataforma interativa foi desenhada para ir
+            além de uma simples apresentação. Nosso objetivo é fornecer as ferramentas, processos e a
+            mentalidade necessários para transformar cada interação com o ticket em uma experiência de
+            solução eficaz e positiva, garantindo a **padronização**.
+        </p>
+
+        <div class="section-header">
+            🎯 Nosso Grande Objetivo
+        </div>
+        <div class="section-body">
+            <ul>
+                <li>Alinhar como identificar e registrar **incidentes** e **solicitações de melhoria**.</li>
+                <li>Garantir padronização no atendimento e resolução.</li>
+                <li>Reduzir tempo de resposta e retrabalho.</li>
+                <li>Aumentar satisfação e transparência com o cliente.</li>
+                <li>Capacitar a equipe na utilização efetiva do Movidesk.</li>
+            </ul>
+        </div>
+        
+        <div class="section-header">
+            🗺️ Trilha de Aprendizado
+        </div>
+        <div class="section-body">
+             <ul>
+                <li>Mudança na estrutura dos tickets de **melhoria**.</li>
+                <li>Capacitação na criação de ticket de **incidente**.</li>
+                <li>Vinculação de usuários a organizações.</li>
+                <li>Vinculação de tickets filhos (relacionados).</li>
+            </ul>
+        </div>
+
+        <div class="section-header">
+            📞 Entrada e Registro da Solicitação
+        </div>
+        <div class="section-body">
+            <h4>Canais de Atendimento:</h4>
+            <ul>
+                <li><strong>Chat:</strong> Para suporte rápido e comunicação instantânea.</li>
+                <li><strong>E-mail:</strong> Para solicitações que demandam mais detalhes ou anexos.</li>
+                <li><strong>Telefone:</strong> Para interações diretas e resolução imediata de urgências.</li>
+            </ul>
+            <h4>Triagem:</h4>
+            <ol>
+                 <li>Saudações: Início profissional e cordial do atendimento.</li>
+                 <li>Coleta de Informações: Levantamento detalhado dos dados relevantes sobre a solicitação.</li>
+                 <li>Contato Inicial: Ligar para o cliente para esclarecer dúvidas ou obter mais detalhes cruciais para a análise.</li>
+            </ol>
+        </div>
+
+        <div class="section-header">
+            🛠️ Criação do Ticket Incidente
+        </div>
+        <div class="section-body">
+            <p>Um Incidente é uma interrupção inesperada em um serviço ou a redução de sua qualidade. A criação do ticket deve seguir 3 passos:</p>
+            <ol>
+                <li>
+                    <strong>Coleta de informações</strong>
+                    <ul>
+                        <li>Entender o relato do cliente em detalhe</li>
+                        <li>Mapear todos os processos realizados até o erro</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Gravação e Evidências</strong>
+                    <ul>
+                        <li>Solicitar **vídeo da ocorrência** (fluxo completo até o erro)</li>
+                        <li>Contextualizar: descrever o ponto da divergência</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Replicação da Situação</strong>
+                    <ul>
+                        <li>Reproduzir a ocorrência em **base de testes**</li>
+                        <li>Conferir se não houve falha de configuração ou etapa omitida</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <div class="section-header">
+            ✨ Criação do Ticket de Melhoria
+        </div>
+        <div class="section-body">
+            <p>Uma Melhoria é uma solicitação de alteração que não decorre de um erro, mas de uma nova funcionalidade ou aprimoramento.</p>
+            <ol>
+                <li>
+                    <strong>Coleta de Necessidade</strong>
+                    <ul>
+                        <li>Entender qual é a **real necessidade** do cliente</li>
+                        <li>Verificar se **já existe** uma funcionalidade no sistema</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Entendimento da Solicitação</strong>
+                    <ul>
+                        <li>Detalhar como o cliente espera que a nova funcionalidade opere</li>
+                        <li>Identificar o que ele deseja visualizar ou ajustar</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Validação com o Cliente</strong>
+                    <ul>
+                        <li>Repassar o entendimento coletado de forma clara e **confirmar**</li>
+                        <li>Evitar retrabalho garantindo alinhamento antes do registro definitivo</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <div class="section-header">
+            🚨 Níveis de Prioridade Detalhados
+        </div>
+        <div class="section-body">
+            <div class="priority-level">
+                <h4>🟢 Baixa</h4>
+                <p><strong>Descrição:</strong> Utilizada apenas em tickets de atendimento (dúvidas, orientações). </p>
+                <p><em>Exemplo: Pergunta sobre um recurso pouco utilizado, solicitação de um manual.</em></p>
+            </div>
+
+            <div class="priority-level">
+                <h4>🟡 Média</h4>
+                <p><strong>Descrição:</strong> Incidentes que não interrompem as operações essenciais, mas causam algum desconforto ou limitação.</p>
+                <p><em>Exemplo: Problema intermitente em um sistema, falha de um recurso secundário.</em></p>
+            </div>
+
+            <div class="priority-level">
+                <h4>🔴 Alta</h4>
+                <p><strong>Descrição:</strong> Incidentes que afetam diretamente e criticamente o operacional, causando **paralisação** ou **impacto significativo** nos serviços.</p>
+                <p><em>Exemplo: Sistema fora do ar, interrupção de serviço essencial.</em></p>
+            </div>
+
+            <div class="priority-level">
+                <h4>⚫ Crítica</h4>
+                <p><strong>Descrição:</strong> Situações emergenciais de altíssimo impacto, que comprometem a **continuidade do negócio** (riscos financeiros/legais). Demandam resposta e mobilização imediata.</p>
+                <p><em>Exemplo: Indisponibilidade total da plataforma para todos os clientes, vazamento de dados sensíveis.</em></p>
+            </div>
+        </div>
+
+        <div class="section-header">
+            🔗 Procedimento Pós-Registro (Vinculação e Acompanhamento)
+        </div>
+        <div class="section-body">
+            <h4>Vinculação dos Tickets</h4>
+            <ul>
+                <li>Sempre **vincular tickets de atendimento** ao ticket principal criado.</li>
+                <li>Garante **rastreabilidade** e **histórico único**.</li>
+            </ul>
+            <h4>Acompanhamento</h4>
+            <ul>
+                <li>Revisão **semanal** dos status das solicitações.</li>
+                <li>Garantir que nada fique **parado** ou **sem retorno** ao cliente.</li>
+            </ul>
+        </div>
+        
+        <div class="section-header">
+            ✅ Procedimento de Encerramento (Melhorias e Incidentes)
+        </div>
+        <div class="section-body">
+             <h4>Encerramento de Melhorias</h4>
+             <ol>
+                <li>Validar se a melhoria foi entregue **conforme especificado**.</li>
+                <li>**Comunicar** ao cliente sobre a nova funcionalidade e **orientar** sobre o uso.</li>
+                <li>Solicitar **feedback** do cliente.</li>
+                <li>**Encerrar ticket** após validação positiva.</li>
+            </ol>
+             <h4>Encerramento de Incidentes</h4>
+             <ol>
+                <li>Validar se o ajuste foi aplicado corretamente.</li>
+                <li>Entrar em **contato com o cliente** → solicitar testes em conjunto.</li>
+                <li>Após confirmação de funcionamento → proceder com **encerramento**.</li>
+            </ol>
+        </div>
+
+
+    </div>
+
+    <footer>
+        <p>BITZ SOFTWARES | "Ninguém constrói nada sozinho"</p>
+    </footer>
+
+</body>
+</html>
